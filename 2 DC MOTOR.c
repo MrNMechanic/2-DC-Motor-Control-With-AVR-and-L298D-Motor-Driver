@@ -25,20 +25,13 @@ int main(void){
 
 	ADCSRA |=(1<<ADEN) |(1<ADPS2)|(1<ADPS1) |(1<<ADPS0);  //enabling the ADC,, setting prescalar 128
 
-	               
-
 	               while(1)
 
 	               {
-
 		               switch (ADMUX)//changing between channels by switch statement
-
 		               {
-
 			               case 0x40://When ADMUX==0x40
-
 			               {
-
 				               ADCSRA |=(1<<ADSC);//start ADC conversion
 
 				               while ( !(ADCSRA & (1<<ADIF)));//wait till ADC conversion
@@ -50,13 +43,9 @@ int main(void){
 				               ADMUX=0x41;//changing channel
 
 				               break;
-
 			               }
-
 			               case 0x41:
-
 			               {
-
 				               ADCSRA |=(1<<ADSC);// start ADC conversion
 
 				               while ( !(ADCSRA & (1<<ADIF)));// wait till ADC conversion
@@ -68,67 +57,31 @@ int main(void){
 				               ADMUX=0x40;// changing channel
 
 				               break;
-
 			               }
-
 		               }
-
-		               
-
 		               if (x_1<(x-50))
-
 		               {
-
 			               PORTD |=(1<<PIND5);
-
 			               _delay_ms(5);
-
 			               PORTD=0;
-
 		               }
-
-		               
-
-		               
-
 		               if (x_1>(x+50))
-
 		               {
-
 			               PORTD |=(1<<PIND4);
-
 			               _delay_ms(5);
-
 			               PORTD=0;
-
 		               }
-
-		               
-
-		               
-
 		               if (y_1<(y-50))
-
 		               {
-
 			               PORTD |=(1<<PIND6);
-
 			               _delay_ms(5);
-
 			               PORTD=0;
-
 		               }
-
 		               if (y_1>(y+50))
-
 		               {
-
 			               PORTD |=(1<<PIND7);
-
 			               _delay_ms(5);
-
 			               PORTD=0;
-
 		               }
-
-	               } }
+	               }
+}
